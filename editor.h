@@ -1,6 +1,8 @@
 #ifndef _EDITOR_
 #define _EDITOR_
 
+#include <lua.h>
+
 enum editor_mode {
   NORMAL,
   INSERT,
@@ -9,6 +11,7 @@ enum editor_mode {
 
 typedef struct {
   enum editor_mode current_mode;
+  lua_State *lua;
 } editor_t;
 
 void create_editor();
