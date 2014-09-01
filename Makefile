@@ -1,4 +1,4 @@
-SRC=main.c editor.c
+SRC=main.c editor.c buffer.c
 LDLIBS=-llua -lncurses
 
 all: hoge

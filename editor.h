@@ -2,6 +2,7 @@
 #define _EDITOR_
 
 #include <lua.h>
+#include "buffer.h"
 
 enum editor_mode {
   NORMAL,
@@ -12,6 +13,7 @@ enum editor_mode {
 typedef struct {
   enum editor_mode current_mode;
   lua_State *lua;
+  buffer_t *active_buffer;
 } editor_t;
 
 void create_editor();

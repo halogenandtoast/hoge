@@ -10,6 +10,7 @@ void create_editor() {
   editor = (editor_t *)malloc(sizeof(editor_t));
   editor->current_mode = NORMAL;
   editor->lua = luaL_newstate();
+  editor->active_buffer = new_buffer();
 
   initscr();
 }
@@ -22,5 +23,6 @@ void run_editor() {
 void free_editor() {
   endwin();
   lua_close(editor->lua);
+  free_buffer(editor->active_buffer);
   free(editor);
 }
