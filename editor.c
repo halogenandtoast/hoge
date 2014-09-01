@@ -7,12 +7,15 @@
 
 editor_t *editor;
 void resize_editor();
+int editor_panic(lua_State *lua);
 
 void create_editor() {
   editor = (editor_t *)malloc(sizeof(editor_t));
   editor->current_mode = NORMAL;
-  editor->lua = luaL_newstate();
   editor->active_buffer = new_buffer();
+  editor->lua = luaL_newstate();
+
+  lua_atpanic(editor->lua, editor_panic);
 
   initscr();
 
@@ -40,3 +43,9 @@ void free_editor() {
   free_buffer(editor->active_buffer);
   free(editor);
 }
+
+int editor_panic(lua_State *lua) {
+  free_editor();
+  return 0;
+}
+
