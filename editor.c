@@ -2,9 +2,11 @@
 #include <ncurses.h>
 #include <lua.h>
 #include <lauxlib.h>
+#include <signal.h>
 #include "editor.h"
 
 editor_t *editor;
+void resize_editor();
 
 void create_editor() {
   editor = (editor_t *)malloc(sizeof(editor_t));
@@ -15,6 +17,16 @@ void create_editor() {
   initscr();
 
   getmaxyx(stdscr, editor->height, editor->width);
+  signal(SIGWINCH, resize_editor);
+}
+
+void resize_editor() {
+  endwin();
+  refresh();
+  clear();
+  getmaxyx(stdscr, editor->height, editor->width);
+  printw("Size: %dx%d\nPress any key to exit", editor->width, editor->height);
+  refresh();
 }
 
 void run_editor() {
