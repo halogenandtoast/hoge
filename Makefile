@@ -1,5 +1,6 @@
+SRC=main.c editor.c
 CC=cc
-SRC=main.c
+
 all: hoge
 
 hoge: ${SRC}
