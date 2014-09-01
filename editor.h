@@ -14,6 +14,8 @@ typedef struct {
   enum editor_mode current_mode;
   lua_State *lua;
   buffer_t *active_buffer;
+  int width;
+  int height;
 } editor_t;
 
 void create_editor();

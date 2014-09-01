@@ -13,10 +13,12 @@ void create_editor() {
   editor->active_buffer = new_buffer();
 
   initscr();
+
+  getmaxyx(stdscr, editor->height, editor->width);
 }
 
 void run_editor() {
-  printw("Press any key to exit");
+  printw("Size: %dx%d\nPress any key to exit", editor->width, editor->height);
   char c = getch();
 }
 
