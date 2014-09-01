@@ -15,6 +15,7 @@ typedef struct {
 } editor_t;
 
 void create_editor();
+void run_editor();
 void free_editor();
 
 #endif

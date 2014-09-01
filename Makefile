@@ -1,5 +1,5 @@
 SRC=main.c editor.c
-LDLIBS=-llua
+LDLIBS=-llua -lncurses
 
 all: hoge
 
